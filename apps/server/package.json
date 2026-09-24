@@ -1,0 +1,11 @@
+{
+  "name": "@aleph/server",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts"
+  },
+  "dependencies": {
+    "@aleph/shared": "workspace:*"
+  }
+}
