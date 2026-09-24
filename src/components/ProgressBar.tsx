@@ -19,7 +19,6 @@ export default function ProgressBar() {
           />
         ))}
         
-        <Text>{pathname}</Text>
       </View>
   )
 }
