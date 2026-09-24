@@ -2,11 +2,15 @@
   "name": "aleph",
   "version": "1.0.0",
   "private": true,
-  "packageManager": "pnpm@10.18.0",
+  "packageManager": "pnpm@12.6.0",
   "scripts": {
     "mobile": "pnpm --filter @aleph/mobile start",
     "ios": "pnpm --filter @aleph/mobile ios",
     "android": "pnpm --filter @aleph/mobile android",
     "web": "pnpm --filter @aleph/mobile web"
+  },
+  "devDependencies": {
+    "tsx": "^4.23.15",
+    "typescript": "~6.0.3"
   }
 }
