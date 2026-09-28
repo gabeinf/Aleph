@@ -2,5 +2,8 @@
   "name": "@aleph/shared",
   "private": true,
   "type": "module",
-  "exports": "./src/index.ts"
+  "exports": "./src/index.ts",
+  "dependencies": {
+    "zod": "^4.6.5"
+  }
 }

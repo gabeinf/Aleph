@@ -6,21 +6,27 @@ import { spacing } from '../../../theme/tokens'
 
 export default function OnboardingLayout() {
   return (
-    <SafeAreaView style={{flex: 1, justifyContent: 'space-between', gap: spacing.lg}}>
+    <SafeAreaView style={{ flex: 1, gap: spacing.lg }}>
 
-    <View style={styles.progressBar}>
-      <ProgressBar/>
-    </View>
+      <View style={styles.progressBar}>
+        <ProgressBar />
+      </View>
 
-      <Stack screenOptions={{ headerShown: false }} />
+      <Stack
+        screenOptions={{
+          headerShown: false,
+          
+        }}
+      />
+
     </SafeAreaView>
   )
 
-  
+
 }
-const styles = StyleSheet.create ({
-    progressBar: {
-      paddingLeft: spacing.xl,
-      paddingTop: spacing.lg
-    }
-  })
+const styles = StyleSheet.create({
+  progressBar: {
+    paddingLeft: spacing.xl,
+    paddingTop: spacing.lg
+  }
+})

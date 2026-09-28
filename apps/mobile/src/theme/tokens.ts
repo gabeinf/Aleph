@@ -36,5 +36,10 @@ export const typography = {
 } as const;
 
 export const radii = {
-    sm: 6
-}
+  xs: 4,
+  sm: 6,
+  md: 10,
+  lg: 16,
+  xl: 24,
+  full: 9999,
+} as const;

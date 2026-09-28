@@ -1,1 +1,1 @@
-export const HELLO = "hello from shared"; 
+export const HELLO = "hello from shared live"; 
