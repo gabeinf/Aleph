@@ -1,13 +1,23 @@
 import { View, Text, StyleSheet, Pressable } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { spacing, typography, radii, colors } from '../../theme/tokens'
-import { io } from 'socket.io-client'
+import { socket } from '../../lib/socket'
+import { useEffect, useState } from 'react'
 
 export default function Home() {
 
-  const handleStartSession = () => {
-    io("http://localhost:3000")
-    console.log('pressed')
+  const [rooms, setRooms] = useState<string[]>([])
+
+  useEffect(() => {
+    const onUpdate = (list: string[]) => setRooms(list)
+    socket.on("rooms:update", onUpdate)
+    socket.connect()
+    return () => { socket.off("rooms:update", onUpdate) }
+  }, [])
+
+  const handleStartSession = async () => {
+    const res = await socket.emitWithAck("room:create");
+    console.log("room:", res);
   }
 
   return (
@@ -22,6 +32,12 @@ export default function Home() {
         </Pressable>
 
         <View style={styles.divider}></View>
+
+        {rooms.map(id => (
+          <View key={id} style={styles.card}>
+            <Text>{id}</Text>
+          </View>
+        ))}
       </View>
 
 
@@ -43,6 +59,14 @@ const styles = StyleSheet.create({
   },
   body: {
     gap: spacing.lg
+  },
+  card: {
+    borderColor: colors.border,
+    borderWidth: 1,
+    borderRadius: radii.sm,
+    justifyContent: 'space-between',
+    padding: spacing.lg,
+    gap: spacing.sm
   },
   userStatus: {
     fontFamily: typography.fontFamily.body,
